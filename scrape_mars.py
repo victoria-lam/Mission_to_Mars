@@ -22,8 +22,8 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     
-    mars_data["news_title"] = soup.find("div", class_="content_title").text
-    mars_data["news_p"] = soup.find("div", class_="rollover_description_inner").text
+    mars["news_title"] = soup.find("div", class_="content_title").text
+    mars["news_p"] = soup.find("div", class_="rollover_description_inner").text
 
     
    ##JPL Mars Space Images - Featured Image
@@ -39,7 +39,7 @@ def scrape():
     pic_soup = BeautifulSoup(pic_html, "html.parser")
     base_url = "https://www.jpl.nasa.gov"
     image_url = pic_soup.find("figure", class_="lede").a["href"]
-    mars_data["featured_image_url"] = base_url + image_url
+    mars["featured_image_url"] = base_url + image_url
     
     
    ##Mars weather
@@ -48,14 +48,14 @@ def scrape():
     tweet_html = browser.html
     tweet_soup = BeautifulSoup(tweet_html, "html.parser")
     
-    mars_data["mars_weather"] = tweet_soup.find("p", class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
+    mars["mars_weather"] = tweet_soup.find("p", class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
     
     
    ##Mars facts
     table = pd.read_html("https://space-facts.com/mars/")
     df = table[0]
     df.columns = ["Description", "Value"]
-    mars_data["facts_table"] = df.to_html()
+    mars["facts_table"] = df.to_html()
     
     
    ##Mars hemispheres
@@ -76,7 +76,7 @@ def scrape():
     for title in titles:
         img_titles.append(title.get_text())
     
-    mars_data["hemisphere_image_urls"] = [{"title": img_titles, "img_url": img_urls} for img_titles, img_urls in zip(img_titles, img_urls)]
+    mars["hemisphere_image_urls"] = [{"title": img_titles, "img_url": img_urls} for img_titles, img_urls in zip(img_titles, img_urls)]
       
     return mars
 
