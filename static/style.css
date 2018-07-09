@@ -1,0 +1,5 @@
+.jumbotron {
+    background-image: url("mars.jpg");
+    background-size: cover;
+    color: white!important;
+}
