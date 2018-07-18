@@ -14,4 +14,7 @@ The initial scraping was done in `mission_to_mars.ipynb` using BeautifulSoup, Pa
 MongoDB with Flask templating was used to create a HTML page that displayed the data scraped from the above URLs.
 - The Jupyter Notebook file was converted into a Python file, `scrape_mars.py`, with the function `scrape` that executes the code and stores it in a dictionary.
 - The template file `index.html` will display the dictionary information in the appropriate HTML elements.
-- The `app.py` file must run with MongoDB in order for the application to work. (I ran MongoDB by first typing `mongo` in Git Bash for windows and then `mongod` in the Command Prompt.)
+- The `app.py` file must run with MongoDB in order for the application to work.
+
+### Screenshot of Homepage:
+![mars homepage](homepage.png)
